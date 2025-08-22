@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: terraform-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: terraform-app
+  template:
+    metadata:
+      labels:
+        app: terraform-app
+    spec:
+      containers:
+      - name: terraform-container
+        image: rukevweubio/my-terraform-image:latest
+        ports:
+        - containerPort: 80
+
